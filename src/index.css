@@ -1,0 +1,242 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+
+@layer base {
+  :root {
+    --background: 42 33% 98%;
+    --foreground: 20 12% 10%;
+
+    --card: 40 28% 96%;
+    --card-foreground: 20 12% 10%;
+
+    --popover: 42 33% 98%;
+    --popover-foreground: 20 12% 10%;
+
+    --primary: 12 40% 62%;
+    --primary-foreground: 42 33% 98%;
+
+    --secondary: 36 22% 92%;
+    --secondary-foreground: 20 10% 22%;
+
+    --muted: 36 18% 93%;
+    --muted-foreground: 20 8% 48%;
+
+    --accent: 12 45% 58%;
+    --accent-foreground: 42 33% 98%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 42 33% 98%;
+
+    --border: 32 18% 90%;
+    --input: 32 18% 90%;
+    --ring: 12 40% 62%;
+
+    --radius: 0.25rem;
+
+    --sidebar-background: 40 28% 96%;
+    --sidebar-foreground: 20 10% 22%;
+    --sidebar-primary: 12 40% 62%;
+    --sidebar-primary-foreground: 42 33% 98%;
+    --sidebar-accent: 36 22% 92%;
+    --sidebar-accent-foreground: 20 10% 22%;
+    --sidebar-border: 32 18% 90%;
+    --sidebar-ring: 12 40% 62%;
+
+    /* Custom luxury tokens */
+    --rose-gold: 12 40% 62%;
+    --rose-gold-light: 12 35% 78%;
+    --rose-gold-dark: 12 45% 48%;
+    --rose-gold-glow: 12 50% 72%;
+    --ivory: 42 33% 98%;
+    --ivory-dark: 40 25% 94%;
+    --beige: 36 22% 92%;
+    --beige-dark: 36 18% 84%;
+    --charcoal: 20 12% 12%;
+    --warm-gray: 20 8% 48%;
+    --champagne: 38 40% 90%;
+
+    --font-display: 'Cormorant Garamond', 'Playfair Display', serif;
+    --font-body: 'Montserrat', sans-serif;
+
+    --shadow-soft: 0 4px 24px -4px hsl(20 12% 12% / 0.06);
+    --shadow-elevated: 0 16px 48px -12px hsl(20 12% 12% / 0.1);
+    --shadow-rose: 0 12px 36px -8px hsl(12 40% 62% / 0.2);
+    --shadow-luxury: 0 24px 64px -16px hsl(20 12% 12% / 0.12);
+    --shadow-card-hover: 0 20px 50px -12px hsl(12 40% 62% / 0.15);
+
+    --gradient-rose: linear-gradient(135deg, hsl(12 40% 62%), hsl(12 45% 52%));
+    --gradient-rose-soft: linear-gradient(135deg, hsl(12 35% 78%), hsl(12 40% 62%));
+    --gradient-ivory: linear-gradient(180deg, hsl(42 33% 98%), hsl(36 22% 94%));
+    --gradient-editorial: linear-gradient(180deg, hsl(36 22% 92%) 0%, hsl(42 33% 98%) 100%);
+    --gradient-shimmer: linear-gradient(90deg, hsl(36 18% 93%) 0%, hsl(42 33% 98%) 50%, hsl(36 18% 93%) 100%);
+    --gradient-dark-overlay: linear-gradient(180deg, transparent 0%, hsl(20 12% 8% / 0.4) 60%, hsl(20 12% 8% / 0.7) 100%);
+  }
+
+  .dark {
+    --background: 20 12% 6%;
+    --foreground: 40 20% 92%;
+    --card: 20 12% 10%;
+    --card-foreground: 40 20% 92%;
+    --popover: 20 12% 10%;
+    --popover-foreground: 40 20% 92%;
+    --primary: 12 40% 62%;
+    --primary-foreground: 20 12% 6%;
+    --secondary: 20 10% 16%;
+    --secondary-foreground: 40 20% 92%;
+    --muted: 20 10% 16%;
+    --muted-foreground: 30 10% 58%;
+    --accent: 12 45% 58%;
+    --accent-foreground: 20 12% 6%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 40 20% 92%;
+    --border: 20 10% 20%;
+    --input: 20 10% 20%;
+    --ring: 12 40% 62%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+
+  ::selection {
+    background-color: hsl(var(--rose-gold) / 0.2);
+    color: hsl(var(--charcoal));
+  }
+}
+
+@layer components {
+  .nav-link {
+    @apply relative inline-block;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute w-full h-[1px] bottom-0 left-0 origin-bottom-right transition-transform duration-500 scale-x-0;
+    background-color: hsl(var(--primary));
+  }
+
+  .nav-link:hover::after {
+    @apply scale-x-100 origin-bottom-left;
+  }
+
+  .btn-luxury {
+    @apply px-10 py-3.5 text-[11px] tracking-[0.25em] uppercase transition-all duration-500;
+    font-family: var(--font-body);
+    font-weight: 500;
+    letter-spacing: 0.25em;
+  }
+
+  .btn-luxury:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-rose);
+  }
+
+  .btn-luxury:active {
+    transform: translateY(0);
+  }
+
+  .btn-luxury-outline {
+    @apply btn-luxury border-2;
+  }
+
+  .shimmer {
+    background: var(--gradient-shimmer);
+    background-size: 200% 100%;
+    animation: shimmer 2s ease-in-out infinite;
+  }
+
+  .section-beige {
+    background-color: hsl(var(--beige));
+  }
+
+  .section-ivory {
+    background-color: hsl(var(--ivory));
+  }
+
+  .section-champagne {
+    background-color: hsl(var(--champagne));
+  }
+
+  .luxury-divider {
+    @apply w-16 h-[1px] mx-auto;
+    background: var(--gradient-rose);
+  }
+
+  .luxury-label {
+    @apply text-[10px] font-body tracking-[0.3em] uppercase text-muted-foreground;
+  }
+
+  .luxury-heading {
+    @apply font-display font-light tracking-wide;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-body {
+    font-family: var(--font-body);
+  }
+
+  .text-rose-gold {
+    color: hsl(var(--rose-gold));
+  }
+
+  .bg-rose-gold {
+    background-color: hsl(var(--rose-gold));
+  }
+
+  .text-charcoal {
+    color: hsl(var(--charcoal));
+  }
+
+  .text-warm-gray {
+    color: hsl(var(--warm-gray));
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground));
+}
